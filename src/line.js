@@ -8,14 +8,13 @@ const arePointsEqual = function(point1, point2) {
 
 class Line {
 	constructor(start, end) {
-		this.start = { ...start };
-		this.end = { ...end };
+		this.start = { x: start.x, y: start.y };
+		this.end = { x: end.x, y: end.y };
 	}
 	toString() {
-		const constructorName = this.constructor.name;
 		const startingPoints = `(${this.start.x},${this.start.y})`;
 		const endingPoints = `(${this.end.x},${this.end.y})`;
-		return `${constructorName} ${startingPoints} ----- ${endingPoints}`;
+		return `Line ${startingPoints} ----- ${endingPoints}`;
 	}
 	isEqualTo(anotherLine) {
 		const isInstanceOfLine = anotherLine instanceof Line;
