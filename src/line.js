@@ -32,14 +32,11 @@ class Line {
 		const y2 = this.end.y;
 		const sumOfDistance = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
 		return Math.sqrt(sumOfDistance);
-		//return Math.floor(distance);
 	}
 	get slope() {
-		const x1 = this.start.x;
-		const y1 = this.start.y;
-		const x2 = this.end.x;
-		const y2 = this.end.y;
-		return (y2 - y1) / (x2 - x1);
+		const diffBetweenYPoints = this.end.y - this.start.y;
+		const diffBetweenXPoints = this.end.x - this.start.x;
+		return diffBetweenYPoints / diffBetweenXPoints;
 	}
 	isParallelTO(otherLine) {
 		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) {
