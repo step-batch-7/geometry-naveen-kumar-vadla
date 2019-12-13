@@ -37,4 +37,19 @@ describe("Line", () => {
 			assert.ok(!line1.isEqualTo(line2));
 		});
 	});
+
+	describe("length", function() {
+		it("Should give length of the given line having positive points", function() {
+			const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+			assert.strictEqual(line.length, 2);
+		});
+		it("Should give length of the given line having negative points", function() {
+			const line = new Line({ x: 1, y: -2 }, { x: -3, y: 4 });
+			assert.strictEqual(line.length, 7);
+		});
+		it("Should give length of the given line having same points", function() {
+			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+			assert.strictEqual(line.length, 0);
+		});
+	});
 });

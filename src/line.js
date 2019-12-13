@@ -25,6 +25,15 @@ class Line {
 		const areEndingPointsEqual = arePointsEqual(this.end, anotherLine.end);
 		return isInstanceOfLine && areStartingPointsEqual && areEndingPointsEqual;
 	}
+	get length() {
+		const x1 = this.start.x;
+		const y1 = this.start.y;
+		const x2 = this.end.x;
+		const y2 = this.end.y;
+		const sumOfDistance = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
+		const distance = Math.sqrt(sumOfDistance);
+		return Math.floor(distance);
+	}
 }
 
 module.exports = Line;
