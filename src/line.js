@@ -1,9 +1,15 @@
 "use strict";
 
 class Line {
-	constructor() {}
+	constructor(start, end) {
+		this.start = { ...start };
+		this.end = { ...end };
+	}
 	toString() {
-		return `Line (1,2) ----- (3,4)`;
+		const constructorName = this.constructor.name;
+		const startingPoints = `(${this.start.x},${this.start.y})`;
+		const endingPoints = `(${this.end.x},${this.end.y})`;
+		return `${constructorName} ${startingPoints} ----- ${endingPoints}`;
 	}
 }
 
