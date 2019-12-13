@@ -1,20 +1,24 @@
 {
-  "name": "geometry-naveen-kumar-vadla",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/step-batch-7/geometry-naveen-kumar-vadla.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/step-batch-7/geometry-naveen-kumar-vadla/issues"
-  },
-  "homepage": "https://github.com/step-batch-7/geometry-naveen-kumar-vadla#readme"
+	"name": "geometry-naveen-kumar-vadla",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "nyc mocha"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/step-batch-7/geometry-naveen-kumar-vadla.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/step-batch-7/geometry-naveen-kumar-vadla/issues"
+	},
+	"homepage": "https://github.com/step-batch-7/geometry-naveen-kumar-vadla#readme",
+	"devDependencies": {
+		"mocha": "^6.2.2",
+		"nyc": "^14.1.1"
+	}
 }
