@@ -16,13 +16,10 @@ class Line {
 		const endingPoints = `(${this.end.x},${this.end.y})`;
 		return `Line ${startingPoints} ----- ${endingPoints}`;
 	}
-	isEqualTo(anotherLine) {
-		const isInstanceOfLine = anotherLine instanceof Line;
-		const areStartingPointsEqual = arePointsEqual(
-			this.start,
-			anotherLine.start
-		);
-		const areEndingPointsEqual = arePointsEqual(this.end, anotherLine.end);
+	isEqualTo(otherLine) {
+		const isInstanceOfLine = otherLine instanceof Line;
+		const areStartingPointsEqual = arePointsEqual(this.start, otherLine.start);
+		const areEndingPointsEqual = arePointsEqual(this.end, otherLine.end);
 		return isInstanceOfLine && areStartingPointsEqual && areEndingPointsEqual;
 	}
 	get length() {
@@ -39,9 +36,12 @@ class Line {
 		const y1 = this.start.y;
 		const x2 = this.end.x;
 		const y2 = this.end.y;
-		const slopeOfLine = (y2 - y1) / (x2 - x1);
-
-		return slopeOfLine;
+		return (y2 - y1) / (x2 - x1);
+	}
+	isParallelTO(otherLine) {
+		const slopeOfLine1 = this.slope;
+		const slopeOfLine2 = otherLine.slope;
+		return slopeOfLine1 == slopeOfLine2;
 	}
 }
 
