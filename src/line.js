@@ -26,20 +26,18 @@ class Line {
 		return areStartingPointsEqual && areEndingPointsEqual;
 	}
 	get length() {
-		const x1 = this.start.x;
-		const y1 = this.start.y;
-		const x2 = this.end.x;
-		const y2 = this.end.y;
-		const sumOfDistance = Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
-		return Math.sqrt(sumOfDistance);
+		const diffOfYPoints = this.end.y - this.start.y;
+		const diffOfXPoints = this.end.x - this.start.x;
+		const distance = Math.pow(diffOfXPoints, 2) + Math.pow(diffOfYPoints, 2);
+		return Math.sqrt(distance);
 	}
 	get slope() {
-		const diffBetweenYPoints = this.end.y - this.start.y;
-		const diffBetweenXPoints = this.end.x - this.start.x;
-		return diffBetweenYPoints / diffBetweenXPoints;
+		const diffOfYPoints = this.end.y - this.start.y;
+		const diffOfXPoints = this.end.x - this.start.x;
+		return diffOfYPoints / diffOfXPoints;
 	}
 	isParallelTO(otherLine) {
-		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) {
+		if (this.isEqualTo(otherLine)) {
 			return false;
 		}
 		const slopeOfLine1 = this.slope;
