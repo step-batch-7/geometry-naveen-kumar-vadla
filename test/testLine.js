@@ -5,7 +5,7 @@ const Line = require("../src/line");
 
 describe("Line", () => {
 	describe("toString", () => {
-		it("Should give the string representation of given object ", function() {
+		it("Should give the string representation of given object ", () => {
 			const lineObj = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const expected = `Line (1,2) ----- (3,4)`;
 			assert.strictEqual(lineObj.toString(), expected);
@@ -38,18 +38,37 @@ describe("Line", () => {
 		});
 	});
 
-	describe("length", function() {
-		it("Should give length of the given line having positive points", function() {
+	describe("length", () => {
+		it("Should give length of the given line having positive points", () => {
 			const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			assert.strictEqual(line.length, 2);
 		});
-		it("Should give length of the given line having negative points", function() {
+		it("Should give length of the given line having negative points", () => {
 			const line = new Line({ x: 1, y: -2 }, { x: -3, y: 4 });
 			assert.strictEqual(line.length, 7);
 		});
-		it("Should give length of the given line having same points", function() {
+		it("Should give length of the given line having same points", () => {
 			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 			assert.strictEqual(line.length, 0);
+		});
+	});
+
+	describe("slope", () => {
+		it("Should give slope of given line having positive points", () => {
+			const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+			assert.strictEqual(line.slope, 1);
+		});
+		it("Should give slope of given line having negative points", () => {
+			const line = new Line({ x: -1, y: 2 }, { x: 3, y: -4 });
+			assert.strictEqual(line.slope, -1.5);
+		});
+		it("Should give slope of given line having same y coordinate points", () => {
+			const line = new Line({ x: 1, y: 2 }, { x: 2, y: 2 });
+			assert.strictEqual(line.slope, 0);
+		});
+		it("Should give slope of given line having same x coordinate points", () => {
+			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 3 });
+			assert.strictEqual(line.slope, Infinity);
 		});
 	});
 });

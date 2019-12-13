@@ -34,6 +34,15 @@ class Line {
 		const distance = Math.sqrt(sumOfDistance);
 		return Math.floor(distance);
 	}
+	get slope() {
+		const x1 = this.start.x;
+		const y1 = this.start.y;
+		const x2 = this.end.x;
+		const y2 = this.end.y;
+		const slopeOfLine = (y2 - y1) / (x2 - x1);
+
+		return slopeOfLine;
+	}
 }
 
 module.exports = Line;
