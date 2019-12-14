@@ -21,7 +21,7 @@ class Line {
 	toString() {
 		const startingPoints = `(${this.start.x},${this.start.y})`;
 		const endingPoints = `(${this.end.x},${this.end.y})`;
-		return `Line ${startingPoints} ----- ${endingPoints}`;
+		return `[Line ${startingPoints} to ${endingPoints}]`;
 	}
 
 	isEqualTo(otherLine) {
