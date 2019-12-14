@@ -13,25 +13,25 @@ describe("Line", () => {
 	});
 
 	describe("isEqualTO", () => {
-		it("should validate if equal lines are given", () => {
+		it("should give true if equal lines are given", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			assert.ok(line1.isEqualTo(line2));
 		});
 
-		it("should invalidate if lines of unequal start points are given", () => {
+		it("should give false if lines of unequal start points are given", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 0, y: 0 }, { x: 3, y: 4 });
 			assert.notOk(line1.isEqualTo(line2));
 		});
 
-		it("should invalidate if lines of unequal end points are given", () => {
+		it("should give false if lines of unequal end points are given", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 1, y: 2 }, { x: 0, y: 0 });
 			assert.notOk(line1.isEqualTo(line2));
 		});
 
-		it("should invalidate if a object is given that is not an instance of Line class", () => {
+		it("should give false if a object is given that is not an instance of Line class", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
 			assert.notOk(line1.isEqualTo(line2));
@@ -93,37 +93,37 @@ describe("Line", () => {
 	});
 
 	describe("isParallelTo", () => {
-		it("Should validate for two parallel lines having positive points", () => {
+		it("Should give true for two parallel lines having positive points", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 5, y: 6 }, { x: 7, y: 8 });
 			assert.ok(line1.isParallelTO(line2));
 		});
 
-		it("Should validate for two parallel lines having negative points", () => {
+		it("Should give true for two parallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -5, y: -6 }, { x: -7, y: -8 });
 			assert.ok(line1.isParallelTO(line2));
 		});
 
-		it("Should validate for two nonparallel lines having positive points", () => {
+		it("Should give false for two nonparallel lines having positive points", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 5, y: 9 }, { x: 7, y: 8 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 
-		it("Should validate for two nonparallel lines having negative points", () => {
+		it("Should give false for two nonparallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -5, y: 6 }, { x: 7, y: -8 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 
-		it("Should validate lines having same points", () => {
+		it("Should give false lines having same points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 
-		it("should invalidate if a object is given that is not an instance of Line class", () => {
+		it("should give false if a object is given that is not an instance of Line class", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
 			assert.notOk(line1.isParallelTO(line2));
