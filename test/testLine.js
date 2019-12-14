@@ -155,5 +155,50 @@ describe("Line", () => {
 			const line1 = new Line({ x: -1, y: -1 }, { x: -3, y: -2 });
 			assert.approximately(line1.findX(-1.5), -2, 0);
 		});
+		it("Should give starting x value when starting and ending x values are same", () => {
+			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 3 });
+			assert.approximately(line.findX(2.5), 1, 0);
+		});
+		it("Should give starting x value when starting and ending y values are same", () => {
+			const line = new Line({ x: 2, y: 3 }, { x: 5, y: 3 });
+			assert.approximately(line.findX(3), 2, 0);
+		});
+	});
+
+	describe("findY", () => {
+		it("Should give NaN if a given point is Outside the Line segment", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
+			assert.isNaN(line.findY(8), NaN);
+		});
+
+		it("Should give starting point of y when starting point of x is given ", () => {
+			const line = new Line({ x: 2, y: 1 }, { x: 3, y: 2 });
+			assert.approximately(line.findY(2), 1, 0);
+		});
+
+		it("Should give ending point y when ending point of x is given ", () => {
+			const line = new Line({ x: 2, y: 1 }, { x: 3, y: 2 });
+			assert.approximately(line.findY(3), 2, 0);
+		});
+
+		it("should give y-coordinate of a point when x is given positive", function() {
+			const line1 = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
+			assert.approximately(line1.findY(2), 1.5, 0);
+		});
+
+		it("should give y-coordinate of a point when x is given negative", function() {
+			const line1 = new Line({ x: -1, y: -1 }, { x: -3, y: -2 });
+			assert.approximately(line1.findY(-2), -1.5, 0);
+		});
+
+		it("Should give starting y value when starting and ending x values are same", () => {
+			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 3 });
+			assert.approximately(line.findY(1), 2, 0);
+		});
+
+		it("Should give starting y value when starting and ending y values are same", () => {
+			const line = new Line({ x: 2, y: 3 }, { x: 5, y: 3 });
+			assert.approximately(line.findY(4), 3, 0);
+		});
 	});
 });

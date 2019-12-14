@@ -51,6 +51,10 @@ class Line {
 	}
 
 	findX(y) {
+		if (this.start.x == this.end.x || this.start.y == this.end.y) {
+			return this.start.x;
+		}
+
 		const yMin = Math.min(this.start.y, this.end.y);
 		const yMax = Math.max(this.start.y, this.end.y);
 		if (y < yMin || y > yMax) {
@@ -61,6 +65,23 @@ class Line {
 		const c = this.start.y - m * this.start.x;
 
 		return (y - c) / m;
+	}
+
+	findY(x) {
+		if (this.start.x == this.end.x || this.start.y == this.end.y) {
+			return this.start.y;
+		}
+
+		const xMin = Math.min(this.start.x, this.end.x);
+		const xMax = Math.max(this.start.x, this.end.x);
+		if (x < xMin || x > xMax) {
+			return NaN;
+		}
+
+		const m = this.slope;
+		const c = this.start.y - m * this.start.x;
+
+		return m * x + c;
 	}
 }
 
