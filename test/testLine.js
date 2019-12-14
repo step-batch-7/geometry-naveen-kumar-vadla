@@ -155,10 +155,12 @@ describe("Line", () => {
 			const line1 = new Line({ x: -1, y: -1 }, { x: -3, y: -2 });
 			assert.approximately(line1.findX(-1.5), -2, 0);
 		});
+
 		it("Should give starting x value when starting and ending x values are same", () => {
 			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 3 });
 			assert.approximately(line.findX(2.5), 1, 0);
 		});
+
 		it("Should give starting x value when starting and ending y values are same", () => {
 			const line = new Line({ x: 2, y: 3 }, { x: 5, y: 3 });
 			assert.approximately(line.findX(3), 2, 0);

@@ -1,9 +1,15 @@
 "use strict";
 
-const arePointsEqual = function(point1, point2) {
+const arePointsEqual = (point1, point2) => {
 	const areXCoordinatesEqual = point1.x == point2.x;
 	const areYCoordinatesEqual = point1.y == point2.y;
 	return areXCoordinatesEqual && areYCoordinatesEqual;
+};
+
+const isNumberInRange = (range, number) => {
+	const lowerLimit = Math.min(...range);
+	const upperLimit = Math.max(...range);
+	return number >= lowerLimit && number <= upperLimit;
 };
 
 class Line {
@@ -55,9 +61,7 @@ class Line {
 			return this.start.x;
 		}
 
-		const yMin = Math.min(this.start.y, this.end.y);
-		const yMax = Math.max(this.start.y, this.end.y);
-		if (y < yMin || y > yMax) {
+		if (!isNumberInRange([this.start.y, this.end.y], y)) {
 			return NaN;
 		}
 
@@ -72,9 +76,7 @@ class Line {
 			return this.start.y;
 		}
 
-		const xMin = Math.min(this.start.x, this.end.x);
-		const xMax = Math.max(this.start.x, this.end.x);
-		if (x < xMin || x > xMax) {
+		if (!isNumberInRange([this.start.x, this.end.x], x)) {
 			return NaN;
 		}
 
