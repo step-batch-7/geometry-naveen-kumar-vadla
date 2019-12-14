@@ -41,12 +41,12 @@ describe("Line", () => {
 	describe("length", () => {
 		it("Should give length of the given line having positive points", () => {
 			const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
-			assert.approximately(line.length, 2.8, 0.2);
+			assert.approximately(line.length, 3, 0.5);
 		});
 
 		it("Should give length of the given line having negative points", () => {
 			const line = new Line({ x: 1, y: -2 }, { x: -3, y: 4 });
-			assert.approximately(line.length, 7.2, 0.2);
+			assert.approximately(line.length, 7, 0.5);
 		});
 
 		it("Should give length of the given line having same points", () => {
@@ -127,6 +127,21 @@ describe("Line", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
 			assert.notOk(line1.isParallelTO(line2));
+		});
+	});
+
+	describe("findX", () => {
+		it("Should give NaN if a given point is Outside the Line segment", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
+			assert.isNaN(line.findX(8), NaN);
+		});
+		it("Should give starting point of x when starting point of y is given ", () => {
+			const line = new Line({ x: 2, y: 1 }, { x: 3, y: 2 });
+			assert.approximately(line.findX(1), 2, 0);
+		});
+		it("Should give ending point x when ending point of y is given ", () => {
+			const line = new Line({ x: 2, y: 1 }, { x: 3, y: 2 });
+			assert.approximately(line.findX(2), 3, 0);
 		});
 	});
 });

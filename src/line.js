@@ -42,12 +42,24 @@ class Line {
 	}
 
 	isParallelTO(otherLine) {
-		if (this.isEqualTo(otherLine)) {
+		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) {
 			return false;
 		}
 		const slopeOfLine1 = this.slope;
 		const slopeOfLine2 = otherLine.slope;
 		return slopeOfLine1 == slopeOfLine2;
+	}
+
+	findX(y) {
+		const yMin = Math.min(this.start.y, this.end.y);
+		const yMax = Math.max(this.start.y, this.end.y);
+		if (y < yMin || y > yMax) {
+			return NaN;
+		}
+		const m = this.slope;
+		const c = this.start.y - m * this.start.x;
+
+		return (y - c) / m;
 	}
 }
 
