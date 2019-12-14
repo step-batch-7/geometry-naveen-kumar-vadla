@@ -56,6 +56,7 @@ class Line {
 		if (y < yMin || y > yMax) {
 			return NaN;
 		}
+
 		const m = this.slope;
 		const c = this.start.y - m * this.start.x;
 
