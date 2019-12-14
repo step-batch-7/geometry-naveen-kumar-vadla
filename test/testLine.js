@@ -203,4 +203,19 @@ describe("Line", () => {
 			assert.approximately(line.findY(4), 3, 0);
 		});
 	});
+
+	describe("split", () => {
+		it("Should give 2 lines splitted exactly at centre", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
+			const firstHalfLine = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
+			const secondHalfLine = new Line({ x: 2, y: 2 }, { x: 3, y: 3 });
+			assert.deepStrictEqual(line.split(), [firstHalfLine, secondHalfLine]);
+		});
+		it("Should give same x and y values for both start and end ", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 1, y: 1 });
+			const firstHalfLine = new Line({ x: 1, y: 1 }, { x: 1, y: 1 });
+			const secondHalfLine = new Line({ x: 1, y: 1 }, { x: 1, y: 1 });
+			assert.deepStrictEqual(line.split(), [firstHalfLine, secondHalfLine]);
+		});
+	});
 });

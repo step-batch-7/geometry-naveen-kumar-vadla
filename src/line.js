@@ -12,6 +12,12 @@ const isNumberInRange = (range, number) => {
 	return number >= lowerLimit && number <= upperLimit;
 };
 
+const getMidPoint = (start, end) => {
+	const midOfXs = (start.x + end.x) / 2;
+	const midOfYs = (start.y + end.y) / 2;
+	return { x: midOfXs, y: midOfYs };
+};
+
 class Line {
 	constructor(start, end) {
 		this.start = { x: start.x, y: start.y };
@@ -84,6 +90,14 @@ class Line {
 		const c = this.start.y - m * this.start.x;
 
 		return m * x + c;
+	}
+
+	split() {
+		const midPoint = getMidPoint(this.start, this.end);
+
+		const firstHalfLine = new Line(this.start, midPoint);
+		const secondHalfLine = new Line(midPoint, this.end);
+		return [firstHalfLine, secondHalfLine];
 	}
 }
 
