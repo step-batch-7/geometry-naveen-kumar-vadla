@@ -130,6 +130,12 @@ describe("Line", () => {
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
 			assert.notOk(line1.isParallelTO(line2));
 		});
+
+		it("Should give false for overlapping lines", () => {
+			const line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+			const line2 = new Line({ x: 2, y: 2 }, { x: 5, y: 5 });
+			assert.notOk(line1.isParallelTO(line2));
+		});
 	});
 
 	describe("findX", () => {

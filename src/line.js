@@ -54,9 +54,10 @@ class Line {
 		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) {
 			return false;
 		}
-		const slopeOfLine1 = this.slope;
-		const slopeOfLine2 = otherLine.slope;
-		return slopeOfLine1 == slopeOfLine2;
+		const areOverLapping =
+			this.hasPoint(new Point(otherLine.start.x, otherLine.start.y)) ||
+			this.hasPoint(new Point(otherLine.end.x, otherLine.end.y));
+		return !areOverLapping && this.slope == otherLine.slope;
 	}
 
 	findX(y) {
