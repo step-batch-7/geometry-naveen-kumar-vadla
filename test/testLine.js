@@ -223,10 +223,21 @@ describe("Line", () => {
 	});
 
 	describe("hasPoint", () => {
-		it("Should give true if the point is present on Line", () => {
+		it("Should give true if a point is sent and it is present on Line", () => {
 			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
 			const point = new Point(2, 2);
 			assert.ok(line.hasPoint(point));
+		});
+
+		it("should give false if a point is sent and it is not on the line", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			const point = new Point(3, 4);
+			assert.notOk(line.hasPoint(point));
+		});
+
+		it("should give false if the given point object is not an instance of Point", function() {
+			const line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.notOk(line.hasPoint({ x: 3, y: 4 }));
 		});
 	});
 });
