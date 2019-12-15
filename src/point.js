@@ -10,6 +10,10 @@ class Point {
 	toString() {
 		return `[Point @(${this.x},${this.y})]`;
 	}
+
+	isEqualTo(otherPoint) {
+		return otherPoint instanceof Point && arePointsEqual(this, otherPoint);
+	}
 }
 
 module.exports = Point;
