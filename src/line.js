@@ -1,10 +1,7 @@
 "use strict";
 
-const arePointsEqual = (point1, point2) => {
-	const areXCoordinatesEqual = point1.x == point2.x;
-	const areYCoordinatesEqual = point1.y == point2.y;
-	return areXCoordinatesEqual && areYCoordinatesEqual;
-};
+const Point = require("./point");
+const { arePointsEqual } = require("./utilities");
 
 const isNumberInRange = (range, number) => {
 	const lowerLimit = Math.min(...range);
@@ -98,6 +95,12 @@ class Line {
 		const firstHalfLine = new Line(this.start, midPoint);
 		const secondHalfLine = new Line(midPoint, this.end);
 		return [firstHalfLine, secondHalfLine];
+	}
+
+	hasPoint(OtherPoint) {
+		return (
+			OtherPoint instanceof Point && OtherPoint.y == this.findY(OtherPoint.x)
+		);
 	}
 }
 
