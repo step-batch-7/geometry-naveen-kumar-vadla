@@ -62,5 +62,10 @@ describe("point", () => {
 			const point = new Point(-2, -3);
 			assert.deepStrictEqual(point.clone(), point);
 		});
+
+		it("should give clone point for a point with undefined coordinate", () => {
+			const point = new Point();
+			assert.deepStrictEqual(point.clone(), point);
+		});
 	});
 });
