@@ -131,9 +131,15 @@ describe("Line", () => {
 			assert.notOk(line1.isParallelTO(line2));
 		});
 
-		it("Should give false for overlapping lines", () => {
+		it("Should give false for overlapping if second line is within the first line ", () => {
 			const line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
 			const line2 = new Line({ x: 2, y: 2 }, { x: 5, y: 5 });
+			assert.notOk(line1.isParallelTO(line2));
+		});
+
+		it("Should give false for overlapping if second line is larger than first line", () => {
+			const line1 = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			const line2 = new Line({ x: -1, y: 0 }, { x: 6, y: 0 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 	});

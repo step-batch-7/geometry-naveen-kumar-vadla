@@ -56,17 +56,19 @@ class Line {
 		}
 		const areOverLapping =
 			this.hasPoint(new Point(otherLine.start.x, otherLine.start.y)) ||
-			this.hasPoint(new Point(otherLine.end.x, otherLine.end.y));
+			this.hasPoint(new Point(otherLine.end.x, otherLine.end.y)) ||
+			otherLine.hasPoint(new Point(this.start.x, this.start.y)) ||
+			otherLine.hasPoint(new Point(this.end.x, this.end.y));
 		return !areOverLapping && this.slope == otherLine.slope;
 	}
 
 	findX(y) {
-		if (this.start.x == this.end.x || this.start.y == this.end.y) {
-			return this.start.x;
-		}
-
 		if (!isNumberInRange([this.start.y, this.end.y], y)) {
 			return NaN;
+		}
+
+		if (this.start.x == this.end.x || this.start.y == this.end.y) {
+			return this.start.x;
 		}
 
 		const m = this.slope;
@@ -76,12 +78,12 @@ class Line {
 	}
 
 	findY(x) {
-		if (this.start.x == this.end.x || this.start.y == this.end.y) {
-			return this.start.y;
-		}
-
 		if (!isNumberInRange([this.start.x, this.end.x], x)) {
 			return NaN;
+		}
+
+		if (this.start.x == this.end.x || this.start.y == this.end.y) {
+			return this.start.y;
 		}
 
 		const m = this.slope;
@@ -98,9 +100,9 @@ class Line {
 		return [firstHalfLine, secondHalfLine];
 	}
 
-	hasPoint(OtherPoint) {
+	hasPoint(otherPoint) {
 		return (
-			OtherPoint instanceof Point && OtherPoint.y == this.findY(OtherPoint.x)
+			otherPoint instanceof Point && otherPoint.y == this.findY(otherPoint.x)
 		);
 	}
 }
