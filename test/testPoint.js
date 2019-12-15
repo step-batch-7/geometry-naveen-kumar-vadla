@@ -37,4 +37,18 @@ describe("point", () => {
 			assert.notOk(point1.isEqualTo(point2));
 		});
 	});
+
+	describe("visit", () => {
+		it("should perform the given action sum and give the result", function() {
+			const point = new Point(1, 2);
+			const actual = point.visit((x, y) => x + y);
+			assert.strictEqual(actual, 3);
+		});
+
+		it("should perform the given action difference and give the result", function() {
+			const point = new Point(-1, -2);
+			const actual = point.visit((x, y) => x - y);
+			assert.strictEqual(actual, 1);
+		});
+	});
 });
