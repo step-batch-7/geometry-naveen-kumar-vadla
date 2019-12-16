@@ -1,6 +1,10 @@
 "use strict";
 
-const { arePointsEqual } = require("./utilities");
+const arePointsEqual = (point1, point2) => {
+	const areXCoordinatesEqual = point1.x == point2.x;
+	const areYCoordinatesEqual = point1.y == point2.y;
+	return areXCoordinatesEqual && areYCoordinatesEqual;
+};
 
 class Point {
 	constructor(x, y) {
@@ -28,13 +32,15 @@ class Point {
 
 		const diffOfYPoints = otherPoint.y - this.y;
 		const diffOfXPoints = otherPoint.x - this.x;
-		const distance = Math.pow(diffOfXPoints, 2) + Math.pow(diffOfYPoints, 2);
+		const distance = diffOfXPoints ** 2 + diffOfYPoints ** 2;
 		return Math.sqrt(distance);
 	}
 
 	isOn(shape) {
 		return shape.hasPoint(this);
 	}
+
+	findPointFromStart(distance) {}
 }
 
 module.exports = { Point };
