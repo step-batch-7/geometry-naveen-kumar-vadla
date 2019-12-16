@@ -49,11 +49,7 @@ class Line {
 	}
 
 	get length() {
-		const diffOfYPoints = this.end.y - this.start.y;
-		const diffOfXPoints = this.end.x - this.start.x;
-		const distance = diffOfXPoints ** 2 + diffOfYPoints ** 2;
-
-		return Math.sqrt(distance);
+		return this.start.findDistanceTo(this.end);
 	}
 
 	get slope() {
