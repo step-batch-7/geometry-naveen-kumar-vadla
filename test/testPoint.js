@@ -106,10 +106,28 @@ describe("point", () => {
 	});
 
 	describe("isOn", () => {
-		it("Should give true if given line has the point", () => {
-			const point = new Point(2, 2);
+		it("Should give true if given line has the point when positive coordinates are given", () => {
 			const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+			const point = new Point(2, 2);
 			assert.ok(point.isOn(line));
+		});
+
+		it("should give false if line doesn't have the point when positive coordinates are given", () => {
+			const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+			const point = new Point(1, 2);
+			assert.isNotOk(point.isOn(line));
+		});
+
+		it("Should give true if given line has the point when negative coordinates are given", () => {
+			const line = new Line({ x: -1, y: -1 }, { x: -4, y: -4 });
+			const point = new Point(-2, -2);
+			assert.isOk(point.isOn(line));
+		});
+
+		it("should give false if line doesn't have the point when negative coordinates are given", () => {
+			const line = new Line({ x: -1, y: -1 }, { x: -4, y: -4 });
+			const point = new Point(-1, -2);
+			assert.isNotOk(point.isOn(line));
 		});
 	});
 });
