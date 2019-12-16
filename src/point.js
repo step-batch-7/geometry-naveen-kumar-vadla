@@ -17,8 +17,8 @@ class Point {
 		);
 	}
 
-	visit(action) {
-		return action(this.x, this.y);
+	visit(visitor) {
+		return visitor(this.x, this.y);
 	}
 
 	clone() {

@@ -48,22 +48,16 @@ class Line {
 	}
 
 	get slope() {
-		const diffOfYPoints = this.end.y - this.start.y;
-		const diffOfXPoints = this.end.x - this.start.x;
-
-		return diffOfYPoints / diffOfXPoints;
+		return (this.end.y - this.start.y) / (this.end.x - this.start.x);
 	}
 
 	isParallelTO(otherLine) {
 		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) return false;
 
-		const areCollinear = arePointsCollinear(
-			this.start,
-			this.end,
-			otherLine.start
+		return (
+			!arePointsCollinear(this.start, this.end, otherLine.start) &&
+			this.slope == otherLine.slope
 		);
-
-		return !areCollinear && this.slope == otherLine.slope;
 	}
 
 	findX(y) {
@@ -98,10 +92,11 @@ class Line {
 	}
 
 	hasPoint(otherPoint) {
-		const doesItHasPoint =
-			otherPoint.y == this.findY(otherPoint.x) ||
-			otherPoint.x == this.findX(otherPoint.y);
-		return otherPoint instanceof Point && doesItHasPoint;
+		return (
+			otherPoint instanceof Point &&
+			(otherPoint.y == this.findY(otherPoint.x) ||
+				otherPoint.x == this.findX(otherPoint.y))
+		);
 	}
 }
 
