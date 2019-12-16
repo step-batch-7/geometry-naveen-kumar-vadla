@@ -39,15 +39,15 @@ describe("Line", () => {
 			assert.notOk(line1.isEqualTo(line2));
 		});
 
-		it("should invalidate if start of line1 matches with end of line2 ", () => {
+		it("should give false if start of line1 matches with end of line2 ", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 3, y: 5 }, { x: 1, y: 2 });
 			assert.notOk(line1.isEqualTo(line2));
 		});
 
-		it("should invalidate if end of line1 matches with start of line2", () => {
-			const line1 = new Line({ x: 1, y: 56 }, { x: 3, y: 4 });
-			const line2 = new Line({ x: 3, y: 4 }, { x: 1, y: 2 });
+		it("should give false if end of line1 matches with start of line2", () => {
+			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+			const line2 = new Line({ x: 3, y: 4 }, { x: 1, y: 3 });
 			assert.notOk(line1.isEqualTo(line2));
 		});
 	});

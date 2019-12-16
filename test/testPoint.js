@@ -96,5 +96,11 @@ describe("point", () => {
 			const point2 = new Point(1, 2);
 			assert.approximately(point1.findDistanceTo(point2), 0, 0);
 		});
+
+		it("Should give NaN if a object which is not an instance of point is given", () => {
+			const point1 = new Point(1, 1);
+			const point2 = { x: 2, y: 2 };
+			assert.isNaN(point1.findDistanceTo(point2));
+		});
 	});
 });
