@@ -24,13 +24,16 @@ class Point {
 	}
 
 	findDistanceTo(otherPoint) {
-		if (!(otherPoint instanceof Point)) {
-			return NaN;
-		}
+		if (!(otherPoint instanceof Point)) return NaN;
+
 		const diffOfYPoints = otherPoint.y - this.y;
 		const diffOfXPoints = otherPoint.x - this.x;
 		const distance = Math.pow(diffOfXPoints, 2) + Math.pow(diffOfYPoints, 2);
 		return Math.sqrt(distance);
+	}
+
+	isOn(shape) {
+		return shape.hasPoint(this);
 	}
 }
 

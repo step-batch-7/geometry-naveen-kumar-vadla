@@ -2,6 +2,7 @@
 
 const { assert } = require("chai");
 
+const { Line } = require("../src/line");
 const { Point } = require("../src/point");
 
 describe("point", () => {
@@ -101,6 +102,14 @@ describe("point", () => {
 			const point1 = new Point(1, 1);
 			const point2 = { x: 2, y: 2 };
 			assert.isNaN(point1.findDistanceTo(point2));
+		});
+	});
+
+	describe("isOn", () => {
+		it("Should give true if given line has the point", () => {
+			const point = new Point(2, 2);
+			const line = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
+			assert.ok(point.isOn(line));
 		});
 	});
 });
