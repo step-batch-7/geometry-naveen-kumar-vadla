@@ -77,4 +77,24 @@ describe("point", () => {
 			assert.notEqual(actual, expected);
 		});
 	});
+
+	describe("findDistanceTo", () => {
+		it("Should give distance of the given positive points", () => {
+			const point1 = new Point(1, 1);
+			const point2 = new Point(2, 2);
+			assert.approximately(point1.findDistanceTo(point2), 1, 0.5);
+		});
+
+		it("Should give distance of the given negative points", () => {
+			const point1 = new Point(-1, -1);
+			const point2 = new Point(-2, -2);
+			assert.approximately(point1.findDistanceTo(point2), 1, 0.5);
+		});
+
+		it("Should give distance 0 if given same points", () => {
+			const point1 = new Point(1, 2);
+			const point2 = new Point(1, 2);
+			assert.approximately(point1.findDistanceTo(point2), 0, 0);
+		});
+	});
 });
