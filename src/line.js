@@ -1,7 +1,12 @@
 "use strict";
 
-const Point = require("./point");
-const { arePointsEqual, isNumberInRange, getMidPoint } = require("./utilities");
+const { Point } = require("./point");
+const {
+	arePointsEqual,
+	isNumberInRange,
+	getMidPoint,
+	arePointsCollinear
+} = require("./utilities");
 
 class Line {
 	constructor(start, end) {
@@ -42,12 +47,12 @@ class Line {
 		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) {
 			return false;
 		}
-		const areOverLapping =
-			this.hasPoint(new Point(otherLine.start.x, otherLine.start.y)) ||
-			this.hasPoint(new Point(otherLine.end.x, otherLine.end.y)) ||
-			otherLine.hasPoint(new Point(this.start.x, this.start.y)) ||
-			otherLine.hasPoint(new Point(this.end.x, this.end.y));
-		return !areOverLapping && this.slope == otherLine.slope;
+		const areCollinear = arePointsCollinear(
+			this.start,
+			this.end,
+			otherLine.start
+		);
+		return !areCollinear && this.slope == otherLine.slope;
 	}
 
 	findX(y) {
@@ -96,4 +101,4 @@ class Line {
 	}
 }
 
-module.exports = Line;
+module.exports = { Line };

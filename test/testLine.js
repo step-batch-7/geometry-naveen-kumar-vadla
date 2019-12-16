@@ -2,8 +2,8 @@
 
 const { assert } = require("chai");
 
-const Line = require("../src/line");
-const Point = require("../src/point");
+const { Line } = require("../src/line");
+const { Point } = require("../src/point");
 
 describe("Line", () => {
 	describe("toString", () => {
@@ -109,13 +109,13 @@ describe("Line", () => {
 	describe("isParallelTo", () => {
 		it("Should give true for two parallel lines having positive points", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
-			const line2 = new Line({ x: 5, y: 6 }, { x: 7, y: 8 });
+			const line2 = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
 			assert.ok(line1.isParallelTO(line2));
 		});
 
 		it("Should give true for two parallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
-			const line2 = new Line({ x: -5, y: -6 }, { x: -7, y: -8 });
+			const line2 = new Line({ x: -2, y: -2 }, { x: -4, y: -4 });
 			assert.ok(line1.isParallelTO(line2));
 		});
 
@@ -127,7 +127,7 @@ describe("Line", () => {
 
 		it("Should give false for two nonparallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
-			const line2 = new Line({ x: -5, y: 6 }, { x: 7, y: -8 });
+			const line2 = new Line({ x: -2, y: 2 }, { x: 4, y: -4 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 
@@ -152,6 +152,12 @@ describe("Line", () => {
 		it("Should give false for overlapping if second line is larger than first line", () => {
 			const line1 = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
 			const line2 = new Line({ x: -1, y: 0 }, { x: 6, y: 0 });
+			assert.notOk(line1.isParallelTO(line2));
+		});
+
+		it("Should give false for collinear Lines", () => {
+			const line1 = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
+			const line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
 			assert.notOk(line1.isParallelTO(line2));
 		});
 	});
