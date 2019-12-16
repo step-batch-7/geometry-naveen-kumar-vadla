@@ -17,6 +17,7 @@ const getMidPoint = (start, end) => {
 	const midOfYs = (start.y + end.y) / 2;
 	return { x: midOfXs, y: midOfYs };
 };
+
 const arePointsCollinear = (point1, point2, point3) => {
 	const [x1, y1] = [point1.x, point1.y];
 	const [x2, y2] = [point2.x, point2.y];

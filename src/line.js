@@ -27,7 +27,12 @@ class Line {
 		}
 		const areStartingPointsEqual = arePointsEqual(this.start, otherLine.start);
 		const areEndingPointsEqual = arePointsEqual(this.end, otherLine.end);
-		return areStartingPointsEqual && areEndingPointsEqual;
+		const areStartAndEndEqual = arePointsEqual(this.start, otherLine.end);
+		const areEndAndStartEqual = arePointsEqual(this.end, otherLine.start);
+		return (
+			(areStartingPointsEqual && areEndingPointsEqual) ||
+			(areStartAndEndEqual && areEndAndStartEqual)
+		);
 	}
 
 	get length() {
