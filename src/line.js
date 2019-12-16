@@ -34,17 +34,12 @@ class Line {
 	}
 
 	isEqualTo(otherLine) {
-		const isInstanceOfLine = otherLine instanceof Line;
-		if (!isInstanceOfLine) return false;
-
-		const areStartingPointsEqual = this.start.isEqualTo(otherLine.start);
-		const areEndingPointsEqual = this.end.isEqualTo(otherLine.end);
-		const areStartAndEndEqual = this.start.isEqualTo(otherLine.end);
-		const areEndAndStartEqual = this.end.isEqualTo(otherLine.start);
-
+		if (!(otherLine instanceof Line)) return false;
 		return (
-			(areStartingPointsEqual && areEndingPointsEqual) ||
-			(areStartAndEndEqual && areEndAndStartEqual)
+			(this.start.isEqualTo(otherLine.start) &&
+				this.end.isEqualTo(otherLine.end)) ||
+			(this.start.isEqualTo(otherLine.end) &&
+				this.end.isEqualTo(otherLine.start))
 		);
 	}
 
