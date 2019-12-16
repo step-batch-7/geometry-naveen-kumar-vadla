@@ -46,11 +46,8 @@ class Line {
 	}
 
 	isParallelTO(otherLine) {
-		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) return false;
-		return (
-			!arePointsCollinear(this.start, this.end, otherLine.start) &&
-			this.slope == otherLine.slope
-		);
+		if (arePointsCollinear(this.start, this.end, otherLine.start)) return false;
+		return this.slope == otherLine.slope;
 	}
 
 	findX(y) {
@@ -94,6 +91,16 @@ class Line {
 		}
 		const x = (1 - distanceRatio) * this.start.x + distanceRatio * this.end.x;
 		const y = (1 - distanceRatio) * this.start.y + distanceRatio * this.end.y;
+		return new Point(x, y);
+	}
+
+	findPointFromEnd(distance) {
+		const distanceRatio = distance / this.length;
+		if (distanceRatio < 0 || distanceRatio > 1) {
+			return null;
+		}
+		const x = (1 - distanceRatio) * this.end.x + distanceRatio * this.start.x;
+		const y = (1 - distanceRatio) * this.end.y + distanceRatio * this.start.y;
 		return new Point(x, y);
 	}
 }
