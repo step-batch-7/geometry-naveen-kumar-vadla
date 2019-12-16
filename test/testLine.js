@@ -38,6 +38,18 @@ describe("Line", () => {
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
 			assert.notOk(line1.isEqualTo(line2));
 		});
+
+		it("should invalidate if start of line1 matches with end of line2 ", () => {
+			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+			const line2 = new Line({ x: 3, y: 5 }, { x: 1, y: 2 });
+			assert.notOk(line1.isEqualTo(line2));
+		});
+
+		it("should invalidate if end of line1 matches with start of line2", () => {
+			const line1 = new Line({ x: 1, y: 56 }, { x: 3, y: 4 });
+			const line2 = new Line({ x: 3, y: 4 }, { x: 1, y: 2 });
+			assert.notOk(line1.isEqualTo(line2));
+		});
 	});
 
 	describe("length", () => {
@@ -219,7 +231,7 @@ describe("Line", () => {
 	});
 
 	describe("split", () => {
-		it("Should give 2 lines splitted exactly at centre", () => {
+		it("Should give 2 lines splitted exactly at center", () => {
 			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 3 });
 			const firstHalfLine = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
 			const secondHalfLine = new Line({ x: 2, y: 2 }, { x: 3, y: 3 });
