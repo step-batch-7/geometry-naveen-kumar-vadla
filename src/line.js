@@ -2,12 +2,6 @@
 
 const { Point } = require("./point");
 
-const arePointsEqual = (point1, point2) => {
-	const areXCoordinatesEqual = point1.x == point2.x;
-	const areYCoordinatesEqual = point1.y == point2.y;
-	return areXCoordinatesEqual && areYCoordinatesEqual;
-};
-
 const isNumberInRange = (range, number) => {
 	const lowerLimit = Math.min(...range);
 	const upperLimit = Math.max(...range);
@@ -43,10 +37,10 @@ class Line {
 		const isInstanceOfLine = otherLine instanceof Line;
 		if (!isInstanceOfLine) return false;
 
-		const areStartingPointsEqual = arePointsEqual(this.start, otherLine.start);
-		const areEndingPointsEqual = arePointsEqual(this.end, otherLine.end);
-		const areStartAndEndEqual = arePointsEqual(this.start, otherLine.end);
-		const areEndAndStartEqual = arePointsEqual(this.end, otherLine.start);
+		const areStartingPointsEqual = this.start.isEqualTo(otherLine.start);
+		const areEndingPointsEqual = this.end.isEqualTo(otherLine.end);
+		const areStartAndEndEqual = this.start.isEqualTo(otherLine.end);
+		const areEndAndStartEqual = this.end.isEqualTo(otherLine.start);
 
 		return (
 			(areStartingPointsEqual && areEndingPointsEqual) ||
