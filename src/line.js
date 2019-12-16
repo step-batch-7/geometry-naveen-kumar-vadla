@@ -47,7 +47,6 @@ class Line {
 
 	isParallelTO(otherLine) {
 		if (!(otherLine instanceof Line) || this.isEqualTo(otherLine)) return false;
-
 		return (
 			!arePointsCollinear(this.start, this.end, otherLine.start) &&
 			this.slope == otherLine.slope
@@ -58,10 +57,8 @@ class Line {
 		if (!isNumberInRange([this.start.y, this.end.y], y)) return NaN;
 		if (this.start.x == this.end.x || this.start.y == this.end.y)
 			return this.start.x;
-
 		const m = this.slope;
 		const c = this.start.y - m * this.start.x;
-
 		return (y - c) / m;
 	}
 
@@ -69,10 +66,8 @@ class Line {
 		if (!isNumberInRange([this.start.x, this.end.x], x)) return NaN;
 		if (this.start.x == this.end.x || this.start.y == this.end.y)
 			return this.start.y;
-
 		const m = this.slope;
 		const c = this.start.y - m * this.start.x;
-
 		return m * x + c;
 	}
 
@@ -81,11 +76,7 @@ class Line {
 			x: (this.start.x + this.end.x) / 2,
 			y: (this.start.y + this.end.y) / 2
 		};
-
-		const firstHalfLine = new Line(this.start, midPoint);
-		const secondHalfLine = new Line(midPoint, this.end);
-
-		return [firstHalfLine, secondHalfLine];
+		return [new Line(this.start, midPoint), new Line(midPoint, this.end)];
 	}
 
 	hasPoint(otherPoint) {
@@ -98,14 +89,11 @@ class Line {
 
 	findPointFromStart(distance) {
 		const distanceRatio = distance / this.length;
-
 		if (distanceRatio < 0 || distanceRatio > 1) {
 			return null;
 		}
-
 		const x = (1 - distanceRatio) * this.start.x + distanceRatio * this.end.x;
 		const y = (1 - distanceRatio) * this.start.y + distanceRatio * this.end.y;
-
 		return new Point(x, y);
 	}
 }

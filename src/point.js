@@ -27,11 +27,9 @@ class Point {
 
 	findDistanceTo(otherPoint) {
 		if (!(otherPoint instanceof Point)) return NaN;
-
 		const diffOfYPoints = otherPoint.y - this.y;
 		const diffOfXPoints = otherPoint.x - this.x;
-		const distance = diffOfXPoints ** 2 + diffOfYPoints ** 2;
-		return Math.sqrt(distance);
+		return Math.sqrt(diffOfXPoints ** 2 + diffOfYPoints ** 2);
 	}
 
 	isOn(shape) {
