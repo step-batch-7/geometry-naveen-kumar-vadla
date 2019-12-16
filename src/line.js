@@ -95,8 +95,7 @@ class Line {
 	}
 
 	findPointFromEnd(distance) {
-		const line = new Line(this.end, this.start);
-		return line.findPointFromStart(distance);
+		return this.findPointFromStart(this.length - distance);
 	}
 }
 
