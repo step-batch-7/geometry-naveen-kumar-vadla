@@ -55,17 +55,26 @@ describe("point", () => {
 	describe("clone", () => {
 		it("should give a copy of point for positive coordinates", function() {
 			const point = new Point(2, 3);
-			assert.deepStrictEqual(point.clone(), point);
+			const actual = point.clone();
+			const expected = new Point(2, 3);
+			assert.deepStrictEqual(actual, expected);
+			assert.notEqual(actual, expected);
 		});
 
 		it("should give a copy of point for negative coordinates", function() {
 			const point = new Point(-2, -3);
-			assert.deepStrictEqual(point.clone(), point);
+			const actual = point.clone();
+			const expected = new Point(-2, -3);
+			assert.deepStrictEqual(actual, expected);
+			assert.notEqual(actual, expected);
 		});
 
 		it("should give clone point for a point with undefined coordinate", () => {
 			const point = new Point();
-			assert.deepStrictEqual(point.clone(), point);
+			const actual = point.clone();
+			const expected = new Point();
+			assert.deepStrictEqual(actual, expected);
+			assert.notEqual(actual, expected);
 		});
 	});
 });
