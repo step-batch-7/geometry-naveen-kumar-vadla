@@ -98,6 +98,19 @@ class Line {
 				otherPoint.x == this.findX(otherPoint.y))
 		);
 	}
+
+	findPointFromStart(distance) {
+		const distanceRatio = distance / this.length;
+
+		if (distanceRatio < 0 || distanceRatio > 1) {
+			return null;
+		}
+
+		const x = (1 - distanceRatio) * this.start.x + distanceRatio * this.end.x;
+		const y = (1 - distanceRatio) * this.start.y + distanceRatio * this.end.y;
+
+		return new Point(x, y);
+	}
 }
 
 module.exports = { Line };

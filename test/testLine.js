@@ -106,7 +106,7 @@ describe("Line", () => {
 			assert.strictEqual(line.slope, -Infinity);
 		});
 
-		it("Should give NaN if both points are same", () => {
+		it("Should give null if both points are same", () => {
 			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 			assert.isNaN(line.slope);
 		});
@@ -169,9 +169,9 @@ describe("Line", () => {
 	});
 
 	describe("findX", () => {
-		it("Should give NaN if a given point is Outside the Line segment", () => {
+		it("Should give null if a given point is Outside the Line segment", () => {
 			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
-			assert.isNaN(line.findX(8), NaN);
+			assert.isNaN(line.findX(8), null);
 		});
 
 		it("Should give starting point of x when starting point of y is given ", () => {
@@ -206,9 +206,9 @@ describe("Line", () => {
 	});
 
 	describe("findY", () => {
-		it("Should give NaN if a given point is Outside the Line segment", () => {
+		it("Should give null if a given point is Outside the Line segment", () => {
 			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
-			assert.isNaN(line.findY(8), NaN);
+			assert.isNaN(line.findY(8), null);
 		});
 
 		it("Should give starting point of y when starting point of x is given ", () => {
@@ -274,6 +274,39 @@ describe("Line", () => {
 		it("should give false if the given point object is not an instance of Point", function() {
 			const line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
 			assert.notOk(line.hasPoint({ x: 3, y: 4 }));
+		});
+	});
+
+	describe("findPointFromStart", () => {
+		it("Should give a point of given distance from starting if given distance is less than the length of line", () => {
+			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			const actual = line.findPointFromStart(2);
+			const expected = new Point(3, 0);
+			assert.deepStrictEqual(actual, expected);
+		});
+
+		it("should give start Point if given distance is 0", function() {
+			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			const actual = line.findPointFromStart(0);
+			const expected = new Point(1, 0);
+			assert.deepStrictEqual(actual, expected);
+		});
+
+		it("should give end Point if given distance is equal to length", function() {
+			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			const actual = line.findPointFromStart(4);
+			const expected = new Point(5, 0);
+			assert.deepStrictEqual(actual, expected);
+		});
+
+		it("should give null if given distance is greater than length", function() {
+			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			assert.isNull(line.findPointFromStart(10));
+		});
+
+		it("should give null if given distance is negative", function() {
+			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
+			assert.isNull(line.findPointFromStart(-10));
 		});
 	});
 });
