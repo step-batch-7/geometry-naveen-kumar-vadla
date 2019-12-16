@@ -8,12 +8,6 @@ const isNumberInRange = (range, number) => {
 	return number >= lowerLimit && number <= upperLimit;
 };
 
-const getMidPoint = (start, end) => {
-	const midOfXs = (start.x + end.x) / 2;
-	const midOfYs = (start.y + end.y) / 2;
-	return { x: midOfXs, y: midOfYs };
-};
-
 const arePointsCollinear = (point1, point2, point3) => {
 	const [x1, y1] = [point1.x, point1.y];
 	const [x2, y2] = [point2.x, point2.y];
@@ -83,7 +77,10 @@ class Line {
 	}
 
 	split() {
-		const midPoint = getMidPoint(this.start, this.end);
+		const midPoint = {
+			x: (this.start.x + this.end.x) / 2,
+			y: (this.start.y + this.end.y) / 2
+		};
 
 		const firstHalfLine = new Line(this.start, midPoint);
 		const secondHalfLine = new Line(midPoint, this.end);
