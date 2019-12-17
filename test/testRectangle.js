@@ -12,4 +12,11 @@ describe("Rectangle", () => {
 			assert.strictEqual(rectangle.toString(), expected);
 		});
 	});
+
+	describe("area", () => {
+		it("Should give the area of the given rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			assert.strictEqual(rectangle.area, 8);
+		});
+	});
 });
