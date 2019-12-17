@@ -12,4 +12,11 @@ describe("Circle", () => {
 			assert.strictEqual(circle.toString(), expected);
 		});
 	});
+
+	describe("area", () => {
+		it("Should give area of given circle", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 1);
+			assert.approximately(circle.area(), 3.14, 0.2);
+		});
+	});
 });
