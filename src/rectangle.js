@@ -18,6 +18,10 @@ class Rectangle {
 	get area() {
 		return this.A.findDistanceTo(this.B) * this.B.findDistanceTo(this.C);
 	}
+
+	get perimeter() {
+		return 2 * (this.A.findDistanceTo(this.B) + this.B.findDistanceTo(this.C));
+	}
 }
 
 module.exports = Rectangle;

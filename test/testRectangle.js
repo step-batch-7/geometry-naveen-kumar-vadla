@@ -14,13 +14,45 @@ describe("Rectangle", () => {
 	});
 
 	describe("area", () => {
-		it("Should give the area of the given rectangle", () => {
+		it("Should give the area if diagonal length is greater than zero", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			assert.strictEqual(rectangle.area, 8);
 		});
 
-		it("should give area 0 if diagonal of length 0 give is given", () => {
+		it("should give the area zero if diagonal length is equal to zero", () => {
 			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+			assert.strictEqual(rectangle.area, 0);
+		});
+
+		it("should give the area zero if breadth is zero", function() {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 4 });
+			assert.strictEqual(rectangle.area, 0);
+		});
+
+		it("should give the area zero if length is zero", function() {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 0 });
+			assert.strictEqual(rectangle.area, 0);
+		});
+	});
+
+	describe("perimeter", () => {
+		it("Should give the perimeter if diagonal length is greater than zero", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			assert.strictEqual(rectangle.perimeter, 12);
+		});
+
+		it("Should give the perimeter zero if diagonal length is equal to zero", () => {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+			assert.strictEqual(rectangle.area, 0);
+		});
+
+		it("should give the perimeter zero if breadth is zero", function() {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 4 });
+			assert.strictEqual(rectangle.area, 0);
+		});
+
+		it("should give the perimeter zero if length is zero", function() {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 4, y: 0 });
 			assert.strictEqual(rectangle.area, 0);
 		});
 	});
