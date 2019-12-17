@@ -143,7 +143,7 @@ describe("point", () => {
 			assert.notOk(point.isOn(circle));
 		});
 
-		it("Should give false if the point is out of the circumference", () => {
+		it("Should give false if the point is outside the circumference", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 7);
 			const point = new Point(0, 9);
 			assert.notOk(point.isOn(circle));
