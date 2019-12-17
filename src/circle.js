@@ -12,7 +12,7 @@ class Circle {
 		return `[Circle @(${this.center.x},${this.center.y}) radius ${this.radius}]`;
 	}
 
-	area() {
+	get area() {
 		return Math.PI * this.radius ** 2;
 	}
 }
