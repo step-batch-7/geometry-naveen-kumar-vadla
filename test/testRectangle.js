@@ -18,5 +18,10 @@ describe("Rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			assert.strictEqual(rectangle.area, 8);
 		});
+
+		it("should give area 0 if diagonal of length 0 give is given", () => {
+			const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+			assert.strictEqual(rectangle.area, 0);
+		});
 	});
 });
