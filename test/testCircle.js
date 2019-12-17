@@ -76,5 +76,15 @@ describe("Circle", () => {
 			const point = new Point(0, 5);
 			assert.ok(circle.hasPoint(point));
 		});
+
+		it("should invalidate if the given point is not on the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 5);
+			const point = new Point(0, 6);
+			assert.notOk(circle.hasPoint(point));
+		});
+		it("should invalidate if an object is given which is not an instance of Point class", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 5);
+			assert.notOk(circle.hasPoint({ x: 0, y: 5 }));
+		});
 	});
 });
