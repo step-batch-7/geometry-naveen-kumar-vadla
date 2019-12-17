@@ -46,7 +46,11 @@ class Line {
 	}
 
 	isParallelTo(otherLine) {
-		if (arePointsCollinear(this.start, this.end, otherLine.start)) return false;
+		if (
+			!(otherLine instanceof Line) ||
+			arePointsCollinear(this.start, this.end, otherLine.start)
+		)
+			return false;
 		return this.slope == otherLine.slope;
 	}
 
