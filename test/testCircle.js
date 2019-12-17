@@ -18,5 +18,10 @@ describe("Circle", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 1);
 			assert.approximately(circle.area, 3.14, 0.2);
 		});
+
+		it("Should give area 0 if given circle radius is 0", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 0);
+			assert.approximately(circle.area, 0, 0);
+		});
 	});
 });
