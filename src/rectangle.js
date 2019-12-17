@@ -2,6 +2,15 @@
 
 const Line = require("./line");
 
+const getSides = diagonal => {
+	const { start, end } = diagonal;
+	const AB = new Line(start, { x: end.x, y: start.y });
+	const DA = new Line(start, { x: start.x, y: end.y });
+	const BC = new Line(end, { x: end.x, y: start.y });
+	const CD = new Line(end, { x: start.x, y: end.y });
+	return { AB: AB, BC: BC, CD: CD, DA: DA };
+};
+
 class Rectangle {
 	constructor(start, end) {
 		this.diagonal = new Line(start, end);
@@ -12,10 +21,8 @@ class Rectangle {
 	}
 
 	get area() {
-		const length = this.diagonal.end.x - this.diagonal.start.x;
-		const breadth = this.diagonal.end.y - this.diagonal.start.y;
-
-		return Math.abs(length * breadth);
+		const { AB, BC } = getSides(this.diagonal);
+		return AB.length * BC.length;
 	}
 }
 
