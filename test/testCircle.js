@@ -114,7 +114,7 @@ describe("Circle", () => {
 		});
 	});
 
-	describe("covers", function() {
+	describe("covers", () => {
 		it("should give true if point is inside the circle", function() {
 			const circle = new Circle({ x: 0, y: 0 }, 7);
 			const point = new Point(2, 3);
