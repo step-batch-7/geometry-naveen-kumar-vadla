@@ -58,10 +58,32 @@ describe("Rectangle", () => {
 	});
 
 	describe("isEqualTo", () => {
-		it("Should give true when equal rectangles are given", () => {
+		it("Should give true when equal rectangles of different reference are given", () => {
 			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const rectangle2 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			assert.ok(rectangle1.isEqualTo(rectangle2));
+		});
+
+		it("Should give true if reference of both rectangles is same", () => {
+			const rectangle = new Rectangle({ x: 2, y: 0 }, { x: 4, y: 0 });
+			assert.ok(rectangle.isEqualTo(rectangle));
+		});
+
+		it("Should give false when rectangles of different diagonals are given", () => {
+			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const rectangle2 = new Rectangle({ x: 6, y: 2 }, { x: 10, y: 0 });
+			assert.notOk(rectangle1.isEqualTo(rectangle2));
+		});
+
+		it("Should given false when an object which is not instance of rectangle is given", () => {
+			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const rectangle2 = {
+				vertexA: { x: 0, y: 2 },
+				vertexB: { x: 4, y: 2 },
+				vertexC: { x: 4, y: 0 },
+				vertexD: { x: 0, y: 0 }
+			};
+			assert.notOk(rectangle1.isEqualTo(rectangle2));
 		});
 	});
 });
