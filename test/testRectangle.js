@@ -85,5 +85,11 @@ describe("Rectangle", () => {
 			};
 			assert.notOk(rectangle1.isEqualTo(rectangle2));
 		});
+
+		it("Should give true if other diagonal of same rectangle is given", () => {
+			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const rectangle2 = new Rectangle({ x: 4, y: 2 }, { x: 0, y: 0 });
+			assert.ok(rectangle1.isEqualTo(rectangle2));
+		});
 	});
 });
