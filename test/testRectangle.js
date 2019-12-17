@@ -3,6 +3,7 @@
 const { assert } = require("chai");
 
 const Rectangle = require("../src/rectangle");
+const Point = require("../src/point");
 
 describe("Rectangle", () => {
 	describe("toString", () => {
@@ -90,6 +91,20 @@ describe("Rectangle", () => {
 			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const rectangle2 = new Rectangle({ x: 4, y: 2 }, { x: 0, y: 0 });
 			assert.ok(rectangle1.isEqualTo(rectangle2));
+		});
+	});
+
+	describe("hasPoint", () => {
+		it("Should give true if given point is on the on one circumference of rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(0, 1);
+			assert.ok(rectangle.hasPoint(point));
+		});
+
+		it("Should give false if an Object is given which is not an instance of Point class", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = { x: 0, y: 1 };
+			assert.notOk(rectangle.hasPoint(point));
 		});
 	});
 });

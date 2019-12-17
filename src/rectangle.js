@@ -39,6 +39,21 @@ class Rectangle {
 			thisDiagonal.isEqualTo(diagonal1) || thisDiagonal.isEqualTo(diagonal2)
 		);
 	}
+
+	hasPoint(otherPoint) {
+		if (!(otherPoint instanceof Point)) return false;
+		const AB = new Line(this.vertexA, this.vertexB);
+		const BC = new Line(this.vertexB, this.vertexC);
+		const CD = new Line(this.vertexC, this.vertexD);
+		const DA = new Line(this.vertexD, this.vertexA);
+
+		return (
+			otherPoint.isOn(AB) ||
+			otherPoint.isOn(BC) ||
+			otherPoint.isOn(CD) ||
+			otherPoint.isOn(DA)
+		);
+	}
 }
 
 module.exports = Rectangle;
