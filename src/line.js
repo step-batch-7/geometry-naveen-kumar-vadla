@@ -45,7 +45,7 @@ class Line {
 		return (this.end.y - this.start.y) / (this.end.x - this.start.x);
 	}
 
-	isParallelTO(otherLine) {
+	isParallelTo(otherLine) {
 		if (arePointsCollinear(this.start, this.end, otherLine.start)) return false;
 		return this.slope == otherLine.slope;
 	}

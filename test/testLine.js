@@ -116,55 +116,55 @@ describe("Line", () => {
 		it("Should give true for two parallel lines having positive points", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
-			assert.ok(line1.isParallelTO(line2));
+			assert.ok(line1.isParallelTo(line2));
 		});
 
 		it("Should give true for two parallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -2, y: -2 }, { x: -4, y: -4 });
-			assert.ok(line1.isParallelTO(line2));
+			assert.ok(line1.isParallelTo(line2));
 		});
 
 		it("Should give false for two nonparallel lines having positive points", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = new Line({ x: 5, y: 9 }, { x: 7, y: 8 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("Should give false for two nonparallel lines having negative points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -2, y: 2 }, { x: 4, y: -4 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("Should give false lines having same points", () => {
 			const line1 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
 			const line2 = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("should give false if a object is given that is not an instance of Line class", () => {
 			const line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
 			const line2 = { start: { x: 1, y: 2 }, end: { x: 3, y: 4 } };
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("Should give false for overlapping if second line is within the first line ", () => {
 			const line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 4 });
 			const line2 = new Line({ x: 2, y: 2 }, { x: 5, y: 5 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("Should give false for overlapping if second line is larger than first line", () => {
 			const line1 = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
 			const line2 = new Line({ x: -1, y: 0 }, { x: 6, y: 0 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 
 		it("Should give false for collinear Lines", () => {
 			const line1 = new Line({ x: 0, y: 0 }, { x: 2, y: 2 });
 			const line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
-			assert.notOk(line1.isParallelTO(line2));
+			assert.notOk(line1.isParallelTo(line2));
 		});
 	});
 
