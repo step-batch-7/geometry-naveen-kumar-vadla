@@ -96,15 +96,21 @@ describe("Circle", () => {
 	});
 
 	describe("moveTo", () => {
-		it("Should give new circle with same properties and at given center", () => {
+		it("Should give new circle with same properties and at given positive center", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 2);
 			const expected = new Circle({ x: 5, y: 5 }, 2);
-			assert.deepStrictEqual(circle.moveTo({ x: 5, y: 5 }), expected);
+			assert.ok(circle.moveTo({ x: 5, y: 5 }).isEqualTo(expected));
+		});
+
+		it("Should give new circle with same properties and at given negative center", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 2);
+			const expected = new Circle({ x: -5, y: -5 }, 2);
+			assert.ok(circle.moveTo({ x: -5, y: -5 }).isEqualTo(expected));
 		});
 
 		it("Should give the same circle when same position is given", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 2);
-			assert.deepStrictEqual(circle.moveTo({ x: 0, y: 0 }), circle);
+			assert.ok(circle.moveTo({ x: 0, y: 0 }).isEqualTo(circle));
 		});
 	});
 });
