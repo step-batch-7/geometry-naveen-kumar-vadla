@@ -43,5 +43,29 @@ describe("Circle", () => {
 			const circle2 = new Circle({ x: 1, y: 2 }, 1);
 			assert.ok(circle1.isEqualTo(circle2));
 		});
+
+		it("Should give false when different radius are given", () => {
+			const circle1 = new Circle({ x: 1, y: 2 }, 1);
+			const circle2 = new Circle({ x: 1, y: 2 }, 2);
+			assert.notOk(circle1.isEqualTo(circle2));
+		});
+
+		it("Should give false when different x-coordinates are given", () => {
+			const circle1 = new Circle({ x: 1, y: 2 }, 1);
+			const circle2 = new Circle({ x: 2, y: 2 }, 1);
+			assert.notOk(circle1.isEqualTo(circle2));
+		});
+
+		it("Should give false when different y-coordinates are given", () => {
+			const circle1 = new Circle({ x: 1, y: 2 }, 1);
+			const circle2 = new Circle({ x: 1, y: 1 }, 1);
+			assert.notOk(circle1.isEqualTo(circle2));
+		});
+
+		it("Should give false when an object which is not an instance of Circle", () => {
+			const circle1 = new Circle({ x: 1, y: 2 }, 1);
+			const circle2 = { center: { x: 1, y: 2 }, radius: 1 };
+			assert.notOk(circle1.isEqualTo(circle2));
+		});
 	});
 });
