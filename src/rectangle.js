@@ -54,6 +54,18 @@ class Rectangle {
 			otherPoint.isOn(DA)
 		);
 	}
+
+	covers(otherPoint) {
+		if (!(otherPoint instanceof Point)) return false;
+		const [xMin, xMax] = [this.vertexA.x, this.vertexC.x].sort((a, b) => a - b);
+		const [yMin, yMax] = [this.vertexA.y, this.vertexC.y].sort((a, b) => a - b);
+		return (
+			otherPoint.x > xMin &&
+			otherPoint.x < xMax &&
+			otherPoint.y > yMin &&
+			otherPoint.y < yMax
+		);
+	}
 }
 
 module.exports = Rectangle;

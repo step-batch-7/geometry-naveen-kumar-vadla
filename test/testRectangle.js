@@ -107,4 +107,12 @@ describe("Rectangle", () => {
 			assert.notOk(rectangle.hasPoint(point));
 		});
 	});
+
+	describe("covers", () => {
+		it("Should give true if given point is inside the rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(2, 1);
+			assert.ok(rectangle.covers(point));
+		});
+	});
 });
