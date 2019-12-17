@@ -101,5 +101,10 @@ describe("Circle", () => {
 			const expected = new Circle({ x: 5, y: 5 }, 2);
 			assert.deepStrictEqual(circle.moveTo({ x: 5, y: 5 }), expected);
 		});
+
+		it("Should give the same circle when same position is given", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 2);
+			assert.deepStrictEqual(circle.moveTo({ x: 0, y: 0 }), circle);
+		});
 	});
 });
