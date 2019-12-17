@@ -21,7 +21,7 @@ describe("Circle", () => {
 
 		it("Should give area 0 if given circle radius is 0", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 0);
-			assert.approximately(circle.area, 0, 0);
+			assert.strictEqual(circle.area, 0);
 		});
 	});
 
@@ -29,6 +29,11 @@ describe("Circle", () => {
 		it("Should given perimeter of given circle", () => {
 			const circle = new Circle({ x: 1, y: 2 }, 1);
 			assert.approximately(circle.perimeter, 6.2, 0.2);
+		});
+
+		it("should give 0 as perimeter when radius is 0", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 0);
+			assert.strictEqual(circle.perimeter, 0);
 		});
 	});
 });
