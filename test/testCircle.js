@@ -94,4 +94,12 @@ describe("Circle", () => {
 			assert.notOk(circle.hasPoint({ x: 0, y: 5 }));
 		});
 	});
+
+	describe("moveTo", () => {
+		it("Should give new circle with same properties and at given center", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 2);
+			const expected = new Circle({ x: 5, y: 5 }, 2);
+			assert.deepStrictEqual(circle.moveTo({ x: 5, y: 5 }), expected);
+		});
+	});
 });
