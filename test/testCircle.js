@@ -3,6 +3,7 @@
 const { assert } = require("chai");
 
 const Circle = require("../src/circle");
+const Point = require("../src/point");
 
 describe("Circle", () => {
 	describe("toString", () => {
@@ -14,24 +15,24 @@ describe("Circle", () => {
 	});
 
 	describe("area", () => {
-		it("Should give area of given circle", () => {
+		it("Should give area of given circle when radius is greater than 0", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 1);
 			assert.approximately(circle.area, 3.14, 0.2);
 		});
 
-		it("Should give area 0 if given circle radius is 0", () => {
+		it("Should give area 0 if given circle radius is equal 0", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 0);
 			assert.strictEqual(circle.area, 0);
 		});
 	});
 
 	describe("perimeter", () => {
-		it("Should given perimeter of given circle", () => {
+		it("Should given perimeter of given circle when radius is greater than 0", () => {
 			const circle = new Circle({ x: 1, y: 2 }, 1);
 			assert.approximately(circle.perimeter, 6.2, 0.2);
 		});
 
-		it("should give 0 as perimeter when radius is 0", () => {
+		it("should give 0 as perimeter when radius is equal 0", () => {
 			const circle = new Circle({ x: 0, y: 0 }, 0);
 			assert.strictEqual(circle.perimeter, 0);
 		});
@@ -66,6 +67,14 @@ describe("Circle", () => {
 			const circle1 = new Circle({ x: 1, y: 2 }, 1);
 			const circle2 = { center: { x: 1, y: 2 }, radius: 1 };
 			assert.notOk(circle1.isEqualTo(circle2));
+		});
+	});
+
+	describe("hasPoint", () => {
+		it("should validate if the given point is on the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 5);
+			const point = new Point(0, 5);
+			assert.ok(circle.hasPoint(point));
 		});
 	});
 });

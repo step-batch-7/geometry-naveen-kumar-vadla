@@ -27,6 +27,11 @@ class Circle {
 			this.radius == otherCircle.radius
 		);
 	}
+
+	hasPoint(otherPoint) {
+		if (!(otherPoint instanceof Point)) return false;
+		return this.center.findDistanceTo(otherPoint) == this.radius;
+	}
 }
 
 module.exports = Circle;
