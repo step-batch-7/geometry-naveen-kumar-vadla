@@ -113,4 +113,12 @@ describe("Circle", () => {
 			assert.ok(circle.moveTo({ x: 0, y: 0 }).isEqualTo(circle));
 		});
 	});
+
+	describe("covers", function() {
+		it("should give true if point is inside the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(2, 3);
+			assert.isTrue(circle.covers(point));
+		});
+	});
 });
