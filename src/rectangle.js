@@ -32,11 +32,15 @@ class Rectangle {
 
 	isEqualTo(otherRectangle) {
 		if (!(otherRectangle instanceof Rectangle)) return false;
-		const thisDiagonal = new Line(this.vertexA, this.vertexC);
-		const diagonal1 = new Line(otherRectangle.vertexA, otherRectangle.vertexC);
-		const diagonal2 = new Line(otherRectangle.vertexB, otherRectangle.vertexD);
+		const thisDiagonal1 = new Line(this.vertexA, this.vertexC);
+		const thisDiagonal2 = new Line(this.vertexB, this.vertexD);
+		const otherDiagonal = new Line(
+			otherRectangle.vertexA,
+			otherRectangle.vertexC
+		);
 		return (
-			thisDiagonal.isEqualTo(diagonal1) || thisDiagonal.isEqualTo(diagonal2)
+			thisDiagonal1.isEqualTo(otherDiagonal) ||
+			thisDiagonal2.isEqualTo(otherDiagonal)
 		);
 	}
 
