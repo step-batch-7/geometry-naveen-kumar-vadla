@@ -36,4 +36,12 @@ describe("Circle", () => {
 			assert.strictEqual(circle.perimeter, 0);
 		});
 	});
+
+	describe("isEqualTO", () => {
+		it("Should give true when equal circles are given", () => {
+			const circle1 = new Circle({ x: 1, y: 2 }, 1);
+			const circle2 = new Circle({ x: 1, y: 2 }, 1);
+			assert.ok(circle1.isEqualTo(circle2));
+		});
+	});
 });
