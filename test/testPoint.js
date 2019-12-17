@@ -2,8 +2,8 @@
 
 const { assert } = require("chai");
 
-const { Line } = require("../src/line");
-const { Point } = require("../src/point");
+const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("point", () => {
 	describe("toString", () => {

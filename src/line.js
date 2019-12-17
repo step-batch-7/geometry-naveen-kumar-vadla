@@ -1,6 +1,6 @@
 "use strict";
 
-const { Point } = require("./point");
+const Point = require("./point");
 
 const isNumberInRange = (range, number) => {
 	const lowerLimit = Math.min(...range);
@@ -99,4 +99,4 @@ class Line {
 	}
 }
 
-module.exports = { Line };
+module.exports = Line;
