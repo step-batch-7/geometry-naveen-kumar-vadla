@@ -111,6 +111,30 @@ describe("Rectangle", () => {
 	describe("covers", () => {
 		it("Should give true if given point is inside the rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(1, 1);
+			assert.ok(rectangle.covers(point));
+		});
+
+		it("Should give false if given point is the edge of the rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(0, 2);
+			assert.notOk(rectangle.covers(point));
+		});
+
+		it("Should give false if given point is outside the rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(6, 0);
+			assert.notOk(rectangle.covers(point));
+		});
+
+		it("Should give false if an object is given which is not an instance of Point class", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = { x: 2, y: 1 };
+			assert.notOk(rectangle.covers(point));
+		});
+
+		it("Should give true if given point is on the diagonal", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const point = new Point(2, 1);
 			assert.ok(rectangle.covers(point));
 		});
