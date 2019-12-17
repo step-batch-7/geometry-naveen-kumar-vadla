@@ -4,6 +4,7 @@ const { assert } = require("chai");
 
 const Line = require("../src/line");
 const Point = require("../src/point");
+const Circle = require("../src/circle");
 
 describe("point", () => {
 	describe("toString", () => {
@@ -128,6 +129,24 @@ describe("point", () => {
 			const line = new Line({ x: -1, y: -1 }, { x: -4, y: -4 });
 			const point = new Point(-1, -2);
 			assert.isNotOk(point.isOn(line));
+		});
+
+		it("should give trues if the point is on the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 7);
+			assert.ok(point.isOn(circle));
+		});
+
+		it("should give false if the point is on the circumference", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 3);
+			assert.notOk(point.isOn(circle));
+		});
+
+		it("Should give false if the point is out of the circumference", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 9);
+			assert.notOk(point.isOn(circle));
 		});
 	});
 });
