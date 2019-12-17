@@ -118,7 +118,31 @@ describe("Circle", () => {
 		it("should give true if point is inside the circle", function() {
 			const circle = new Circle({ x: 0, y: 0 }, 7);
 			const point = new Point(2, 3);
-			assert.isTrue(circle.covers(point));
+			assert.ok(circle.covers(point));
+		});
+
+		it("should give true if point is the center the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 0);
+			assert.ok(circle.covers(point));
+		});
+
+		it("should give false if point is outside the circumference of the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 8);
+			assert.notOk(circle.covers(point));
+		});
+
+		it("should give false if point is on the circumference of the circle", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = new Point(0, 7);
+			assert.notOk(circle.covers(point));
+		});
+
+		it("should give false is not the instance of the point class", function() {
+			const circle = new Circle({ x: 0, y: 0 }, 7);
+			const point = { x: 2, y: 3 };
+			assert.notOk(circle.covers(point));
 		});
 	});
 });

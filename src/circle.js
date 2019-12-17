@@ -40,7 +40,7 @@ class Circle {
 	covers(otherPoint) {
 		if (!(otherPoint instanceof Point)) return false;
 		const distance = this.center.findDistanceTo(otherPoint);
-		return distance > 0 && distance < this.radius;
+		return distance >= 0 && distance < this.radius;
 	}
 }
 
