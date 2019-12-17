@@ -56,4 +56,12 @@ describe("Rectangle", () => {
 			assert.strictEqual(rectangle.area, 0);
 		});
 	});
+
+	describe("isEqualTo", () => {
+		it("Should give true when equal rectangles are given", () => {
+			const rectangle1 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const rectangle2 = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			assert.ok(rectangle1.isEqualTo(rectangle2));
+		});
+	});
 });

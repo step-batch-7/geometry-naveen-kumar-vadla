@@ -29,6 +29,16 @@ class Rectangle {
 				this.vertexB.findDistanceTo(this.vertexC))
 		);
 	}
+
+	isEqualTo(otherRectangle) {
+		if (!(otherRectangle instanceof Rectangle)) return false;
+		return (
+			this.vertexA.isEqualTo(otherRectangle.vertexA) &&
+			this.vertexB.isEqualTo(otherRectangle.vertexB) &&
+			this.vertexC.isEqualTo(otherRectangle.vertexC) &&
+			this.vertexD.isEqualTo(otherRectangle.vertexD)
+		);
+	}
 }
 
 module.exports = Rectangle;
