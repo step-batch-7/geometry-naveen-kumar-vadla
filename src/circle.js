@@ -34,6 +34,7 @@ class Circle {
 	}
 
 	moveTo(newPosition) {
+		if (!(newPosition instanceof Point)) return null;
 		return new Circle(newPosition, this.radius);
 	}
 
