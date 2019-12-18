@@ -95,7 +95,7 @@ describe("Rectangle", () => {
 	});
 
 	describe("hasPoint", () => {
-		it("Should give true if given point is on the circumference of rectangle", () => {
+		it("Should give true if given point is on the side rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const point = new Point(0, 1);
 			assert.ok(rectangle.hasPoint(point));
