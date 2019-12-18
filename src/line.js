@@ -95,6 +95,7 @@ class Line {
 		}
 		const x = (1 - distanceRatio) * this.start.x + distanceRatio * this.end.x;
 		const y = (1 - distanceRatio) * this.start.y + distanceRatio * this.end.y;
+		if (isNaN(x) || isNaN(y)) return null;
 		return new Point(x, y);
 	}
 
