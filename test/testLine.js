@@ -169,9 +169,9 @@ describe("Line", () => {
 	});
 
 	describe("findX", () => {
-		it("Should give null if a given point is Outside the Line segment", () => {
+		it("Should give NaN if a given point is Outside the Line segment", () => {
 			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 2 });
-			assert.isNaN(line.findX(8), null);
+			assert.isNaN(line.findX(8));
 		});
 
 		it("Should give starting point of x when starting point of y is given ", () => {
@@ -308,6 +308,11 @@ describe("Line", () => {
 			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
 			assert.isNull(line.findPointFromStart(-10));
 		});
+
+		it("Should give null if given point is not a number", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.isNull(line.findPointFromStart("point"));
+		});
 	});
 
 	describe("findPointFromEnd", () => {
@@ -340,6 +345,11 @@ describe("Line", () => {
 		it("should give null if given distance is less than length", function() {
 			const line = new Line({ x: 1, y: 0 }, { x: 5, y: 0 });
 			assert.isNull(line.findPointFromEnd(-10));
+		});
+
+		it("Should give null if given point is not a number", () => {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.isNull(line.findPointFromEnd("point"));
 		});
 	});
 });
