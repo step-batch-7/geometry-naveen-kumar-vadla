@@ -115,6 +115,12 @@ describe("Circle", () => {
 			const newPosition = new Point(0, 0);
 			assert.ok(circle.moveTo(newPosition).isEqualTo(circle));
 		});
+
+		it("Should give null if an object which is not an istance of Point class is given", () => {
+			const circle = new Circle({ x: 0, y: 0 }, 5);
+			const newPosition = { x: 5, y: 5 };
+			assert.isNull(circle.moveTo(newPosition));
+		});
 	});
 
 	describe("covers", () => {
