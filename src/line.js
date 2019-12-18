@@ -51,6 +51,11 @@ class Line {
 			arePointsCollinear(this.start, this.end, otherLine.start)
 		)
 			return false;
+		if (
+			Math.abs(this.slope) == Infinity &&
+			Math.abs(otherLine.slope) == Infinity
+		)
+			return true;
 		return this.slope == otherLine.slope;
 	}
 
