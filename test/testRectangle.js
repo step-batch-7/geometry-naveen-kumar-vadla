@@ -95,10 +95,28 @@ describe("Rectangle", () => {
 	});
 
 	describe("hasPoint", () => {
-		it("Should give true if given point is on the on one circumference of rectangle", () => {
+		it("Should give true if given point is on the circumference of rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const point = new Point(0, 1);
 			assert.ok(rectangle.hasPoint(point));
+		});
+
+		it("Should give false if given point is inside the rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(1, 1);
+			assert.notOk(rectangle.hasPoint(point));
+		});
+
+		it("Should give false if given point is outside the rectangle", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(6, 0);
+			assert.notOk(rectangle.hasPoint(point));
+		});
+
+		it("Should give false if given point is on the diagonal", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(2, 1);
+			assert.notOk(rectangle.hasPoint(point));
 		});
 
 		it("Should give false if an Object is given which is not an instance of Point class", () => {
@@ -112,6 +130,12 @@ describe("Rectangle", () => {
 		it("Should give true if given point is inside the rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const point = new Point(1, 1);
+			assert.ok(rectangle.covers(point));
+		});
+
+		it("Should give true if given point is on the diagonal", () => {
+			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
+			const point = new Point(2, 1);
 			assert.ok(rectangle.covers(point));
 		});
 
@@ -131,12 +155,6 @@ describe("Rectangle", () => {
 			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
 			const point = { x: 2, y: 1 };
 			assert.notOk(rectangle.covers(point));
-		});
-
-		it("Should give true if given point is on the diagonal", () => {
-			const rectangle = new Rectangle({ x: 0, y: 2 }, { x: 4, y: 0 });
-			const point = new Point(2, 1);
-			assert.ok(rectangle.covers(point));
 		});
 	});
 });
