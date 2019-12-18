@@ -50,13 +50,7 @@ class Rectangle {
 		const BC = new Line(this.vertexB, this.vertexC);
 		const CD = new Line(this.vertexC, this.vertexD);
 		const DA = new Line(this.vertexD, this.vertexA);
-
-		return (
-			otherPoint.isOn(AB) ||
-			otherPoint.isOn(BC) ||
-			otherPoint.isOn(CD) ||
-			otherPoint.isOn(DA)
-		);
+		return [AB, BC, CD, DA].some(line => otherPoint.isOn(line));
 	}
 
 	covers(otherPoint) {
